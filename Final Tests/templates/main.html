@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<head>
+<style>
+h1 {
+    background-color: #c0c0c0;
+    text-shadow: 1px 1px  #737373;
+}
+</style>
+</head>
+<h1>
+    2D NMR Temperature Coefficient Calculator
+    <br>
+
+</h1>
+<p>This webapp has been built as tool for calculating linear temperature proton shift coefficients from 2D NMR experiments. The algorithm <br>
+contained in this webapp was written by Kyle Trainor as a member of the University of Waterloo, Dr. Meiering Protein Folding Lab.<br>
+These coefficients can be used in prediction of protein stability. </p>
+<form action="/submit" method="post">
+Temperatures:<br>
+<input type=text name='Temperatures' placeholder="Ex. 25, 30, 35, 40"><br>
+<br>
+Reference Peaks (ppm):<br>
+<input type=text name='Reference peaks (ppm)' placeholder="Ex. 0, 0, 0, 0"><br>
+<br>
+Starting Temperatures Index:<br>
+<input type=text name='Starting Temperature Index' placeholder="1"><br>
+<br>
+Peaklist Filenames in Ascending Order:<br>
+<input type=text name='Peaklists' size="35" placeholder='Ex. t25.csv, t30.csv, t35.csv, t40.csv'><br>
+<br>
+Assignment:<br>
+<form action="submit" method="post" enctype="multipart/form-data">
+    <input type=file name='Assignments' accept=".csv" placeholder='Upload Peaks Assignments'><br>
+<br>
+</form>
+Temperature Peaklist Files:<br>
+<form action="submit" method="post" enctype="multipart/form-data">
+<input type="file" name="file[]" size="35" multiple="">
+</form>
+<br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+    {% endblock %}
